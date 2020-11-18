@@ -4,29 +4,34 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+// pas besoin de les exporter
+//
+// const mapActions = Vuex.mapActions;
+// const mapGetters = Vuex.mapGetters;
+// const mapState = Vuex.mapState;
 
-const mapActions = Vuex.mapActions;
-const mapGetters = Vuex.mapGetters;
-const mapState = Vuex.mapState;
+// dans les mutations et actions met directement une fonction et pas une fonction assigné à une variable
+// ex INCREMENT: function(state) → INCREMENT(state)
 
-const store = new Vuex.Store({
+// besoin d'export directement le store et pas la constante je ne sais pas pourquoi
+export default new Vuex.Store({
     state: {
         count: 1,
     },
     mutations: {    //Synchrone, modifie un état à la fois
-        INCREMENT: function(state) {
+        INCREMENT(state) {
             state.count+=1;
         },
-        DECREMENT: function(state) {
+        DECREMENT(state) {
             state.count-=1;
         }
     },
-    
+
     actions: {      //Asynchrone, peut appeler plusieurs mutations (plusieurs modifications d'états possibles)
-        increment: function(context) {
+        increment(context) {
             context.commit('INCREMENT');
         },
-        decrement: function(context) {
+        decrement(context) {
             context.commit('DECREMENT');
         }
     },
@@ -36,10 +41,3 @@ const store = new Vuex.Store({
     },
 
 });
-
-export default {
-    store,
-    mapActions,
-    mapGetters,
-    mapState
-}

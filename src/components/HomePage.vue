@@ -3,9 +3,10 @@
     <div id="app">
         <h1>Compteur</h1>
         
-        {{ this.$store.count }} est {{ this.$store.parity}}
+        {{ count }} est {{ parity}}
         <hr>
         <button @click="increment">Incrémenter</button>
+        <button @click="decrement">Décrémenter</button>
     </div>
 </template>
 

@@ -4,29 +4,24 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-
-const mapActions = Vuex.mapActions;
-const mapGetters = Vuex.mapGetters;
-const mapState = Vuex.mapState;
-
-const store = new Vuex.Store({
+export default new Vuex.Store({
     state: {
         count: 1,
     },
     mutations: {    //Synchrone, modifie un état à la fois
-        INCREMENT: function(state) {
+        INCREMENT(state) {
             state.count+=1;
         },
-        DECREMENT: function(state) {
+        DECREMENT(state) {
             state.count-=1;
         }
     },
     
     actions: {      //Asynchrone, peut appeler plusieurs mutations (plusieurs modifications d'états possibles)
-        increment: function(context) {
+        increment(context) {
             context.commit('INCREMENT');
         },
-        decrement: function(context) {
+        decrement(context) {
             context.commit('DECREMENT');
         }
     },
@@ -36,10 +31,3 @@ const store = new Vuex.Store({
     },
 
 });
-
-export default {
-    store,
-    mapActions,
-    mapGetters,
-    mapState
-}

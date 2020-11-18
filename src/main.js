@@ -1,8 +1,21 @@
 import Vue from 'vue'
-import App from './App.vue'
+import Vuex from 'vuex'
+
+import HomePage from './components/HomePage.vue'
+
+import store from './store';
+
+
 
 Vue.config.productionTip = false
 
+Vue.use(Vuex);
+
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el: '#app',
+  store,
+  components: {
+    HomePage,
+  },
+  render: (h) => { return h(HomePage)}
+})
